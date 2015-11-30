@@ -34,7 +34,7 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
 
   /***************************************************************************
   *                                                                          *
@@ -45,5 +45,13 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
+
+  'GET /contacts': 'Contact.getContact',
+  'GET /contacts/search': 'Contact.searchContacts',
+  'GET /contact/:nickname': 'Contact.getContactByNickname',
+
+  'POST /contact': 'Contact.createContact',
+
+  'DELETE /contact': 'Contact.deleteContact'
 
 };
