@@ -12,11 +12,11 @@ module.exports = {
   attributes: {
 
     firstname: {
-      type: 'string',
+      type: 'string'
     },
 
     lastname: {
-      type: 'string',
+      type: 'string'
     },
 
     nickname: {
@@ -25,7 +25,8 @@ module.exports = {
     },
 
     email: {
-      type: 'string'
+      type: 'string',
+      unique: true
     },
 
     password: {
@@ -56,14 +57,18 @@ module.exports = {
   },
 
   // Lifecycle Callbacks
-  beforeCreate: function (values, cb) {
 
-    // Encrypt password
-    bcrypt.hash(values.password, 10, function(err, hash) {
-      if(err) return cb(err);
-      values.password = hash;
+  beforeCreate: function (values, cb) {
+    if(typeof values.password !== 'undefined') {
+      // Encrypt password
+      bcrypt.hash(values.password, 10, function(err, hash) {
+        if(err) return cb(err);
+        values.password = hash;
+        cb();
+      });
+    } else {
       cb();
-    });
+    }
   }
 
 };

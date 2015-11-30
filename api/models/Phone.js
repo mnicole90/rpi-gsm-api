@@ -17,18 +17,14 @@ module.exports = {
     phone: {
       type: 'string',
       minLength: 10,
-      maxLength: 10
+      maxLength: 10,
+      unique: true
     },
 
     owner: {
       model: 'contact'
-    },
-
-    toJSON: function() {
-      var obj = this.toObject();
-      delete obj.phone;
-      return obj;
     }
+
   }
 };
 
