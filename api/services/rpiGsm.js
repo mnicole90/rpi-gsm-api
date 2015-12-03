@@ -90,7 +90,7 @@ module.exports = {
         }
       });
     } else {
-      this.init(function (err, isOpen) {
+      that.init(function (err, isOpen) {
         callback(err, isOpen);
       });
     }
