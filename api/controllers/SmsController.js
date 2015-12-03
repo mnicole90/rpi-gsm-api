@@ -5,7 +5,7 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
-var gsm = RpiGSM;
+var gsm = rpiGsm;
 
 module.exports = {
 
