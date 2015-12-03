@@ -86,7 +86,7 @@ module.exports = {
   deleteContact: function (req, res) {
     Contact.destroy({id: req.param('id')}).exec(function (err) {
       if (err) return res.badRequest(err);
-      return res.json({});
+      return res.json({deleted: req.param('id')});
     });
   }
 
