@@ -60,7 +60,9 @@ module.exports = {
                         errorDetails: "Impossible d'envoyer la commande d'envoi du SMS."
                       }, false);
                     } else {
-                      sp.drain(callback(false, {result: "Message en cours d'envoi, se reporter aux logs pour plus d'informations."}));
+                      sp.drain(function () {
+                        callback(false, {result: "Message en cours d'envoi, se reporter aux logs pour plus d'informations."});
+                      });
                     }
                   });
                 });
