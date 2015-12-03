@@ -6,19 +6,19 @@ var sp = new SerialPort("/dev/ttyUSB0", {
 }, false);
 
 sp.on('open', function (data) {
-  sails.log.verbose(data);
+  sails.log.verbose('FONA (open): ', data);
 });
 
 sp.on('data', function (data) {
-  sails.log.verbose(data);
+  sails.log.verbose('FONA (data): ', data);
 });
 
 sp.on('close', function (data) {
-  sails.log.verbose(data);
+  sails.log.verbose('FONA (close): ', data);
 });
 
 sp.on('error', function (err) {
-  sails.log.error(err);
+  sails.log.error('FONA (error): ', err);
 });
 
 
