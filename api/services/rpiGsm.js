@@ -5,6 +5,22 @@ var sp = new SerialPort("/dev/ttyUSB0", {
   parser: serialport.parsers.readline("\n")
 }, false);
 
+sp.on('open', function (data) {
+  sails.log.verbose(data);
+});
+
+sp.on('data', function (data) {
+  sails.log.verbose(data);
+});
+
+sp.on('close', function (data) {
+  sails.log.verbose(data);
+});
+
+sp.on('error', function (err) {
+  sails.log.error(err);
+});
+
 
 module.exports = {
 
@@ -13,23 +29,6 @@ module.exports = {
       if (err) {
         callback(err, false);
       } else {
-
-        sp.on('open', function (data) {
-          sails.log.verbose(data);
-        });
-
-        sp.on('data', function (data) {
-          sails.log.verbose(data);
-        });
-
-        sp.on('close', function (data) {
-          sails.log.verbose(data);
-        });
-
-        sp.on('error', function (err) {
-          sails.log.error(err);
-        });
-
         callback(false, true);
       }
     });
