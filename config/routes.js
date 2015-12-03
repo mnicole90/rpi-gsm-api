@@ -52,6 +52,8 @@ module.exports.routes = {
 
   'POST /contact': 'Contact.createContact',
 
-  'DELETE /contact': 'Contact.deleteContact'
+  'DELETE /contact': 'Contact.deleteContact',
+
+  'POST /sms/send': 'Sms.send'
 
 };
