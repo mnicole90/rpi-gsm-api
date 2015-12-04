@@ -97,8 +97,19 @@ module.exports = {
     }
   },
 
-  checkAllSMS: function () {
+  checkAllSMS: function (callback) {
+    if (sp.isOpen()) {
 
+      // Demande de récupération des SMS
+      sp.write("R\n", function (err, results) {
+        if (err) {
+          callback({errorInfos: err, errorDetails: "Impossible d'envoyer la commande de récupération des SMS."}, false);
+        } else {
+          callback(false, {gsmResult: results});
+        }
+      });
+
+    }
   }
 
 };
