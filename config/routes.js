@@ -44,6 +44,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+  /* Contacts */
   'GET /contacts': 'Contact.getContact',
   'GET /contacts/search': 'Contact.searchContacts',
   'GET /contact/:nickname': 'Contact.getContactByNickname',
@@ -52,6 +53,7 @@ module.exports.routes = {
 
   'DELETE /contact': 'Contact.deleteContact',
 
+  /* SMS */
   'POST /sms/send': 'Sms.send'
 
 };

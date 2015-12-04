@@ -34,6 +34,25 @@ module.exports = {
     });
   },
 
+  reloadConnection: function (callback) {
+    var that = this;
+    if (sp.isOpen()) {
+      sp.close(function (err) {
+        if (err) {
+          callback(err, false);
+        } else {
+          that.init(function (err, isOpen) {
+            callback(err, isOpen);
+          });
+        }
+      });
+    } else {
+      that.init(function (err, isOpen) {
+        callback(err, isOpen);
+      });
+    }
+  },
+
   sendSMS: function (recipient, message, callback) {
     if (sp.isOpen()) {
 
@@ -78,23 +97,8 @@ module.exports = {
     }
   },
 
-  reloadConnection: function (callback) {
-    var that = this;
-    if (sp.isOpen()) {
-      sp.close(function (err) {
-        if (err) {
-          callback(err, false);
-        } else {
-          that.init(function (err, isOpen) {
-            callback(err, isOpen);
-          });
-        }
-      });
-    } else {
-      that.init(function (err, isOpen) {
-        callback(err, isOpen);
-      });
-    }
+  checkAllSMS: function () {
+
   }
 
 };
