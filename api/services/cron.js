@@ -1,8 +1,7 @@
-var CronJob = require('cron').CronJob,
-  gsm = rpiGsm;
+var CronJob = require('cron').CronJob;
 new CronJob('00 0,30 * * * *', function() {
 
-  gsm.checkAllSMS(function (err, result) {
+  rpiGsm.checkAllSMS(function (err, result) {
     if(err) {
       sails.log.error('CRON (error): ', err);
     } else {
