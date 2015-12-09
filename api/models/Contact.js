@@ -21,7 +21,8 @@ module.exports = {
 
     nickname: {
       type: 'string',
-      unique: true
+      unique: true,
+      required: true
     },
 
     email: {

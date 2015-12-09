@@ -24,7 +24,7 @@ module.exports = {
 
     if(typeof req.param('recipient') !== 'undefined') {
       recipient = req.param('recipient');
-      Contact.findOne({_id: recipient}).exec(function (err, result) {
+      Contact.findOne({id: recipient}).exec(function (err, result) {
         if (err) return res.badRequest(err);
 
         gsm.init(function(err) {

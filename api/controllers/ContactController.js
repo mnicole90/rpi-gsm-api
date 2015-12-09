@@ -53,17 +53,9 @@ module.exports = {
   },
 
   createContact: function (req, res) {
-    var firstname = (typeof req.param('firstname') !== 'undefined') ? req.param('firstname') : '',
-      lastname = (typeof req.param('lastname') !== 'undefined') ? req.param('lastname') : '',
-      email = (typeof req.param('email') !== 'undefined') ? req.param('email') : '',
-      phones = (typeof req.param('phones') !== 'undefined') ? JSON.parse(req.param('phones')) : '';
+    var phones = (typeof req.param('phones') !== 'undefined') ? JSON.parse(req.param('phones')) : '';
 
     Contact.create(
-      /*{
-        firstname: firstname,
-        lastname: lastname,
-        email: email
-      }*/
       req.allParams()
     ).exec(function (err, created) {
       if (err) return res.badRequest(err);
