@@ -67,7 +67,7 @@ module.exports = {
                 label: phone.label,
                 phone: phone.phone
               });
-              r[0].save(function (err, res) {
+              r[0].save(function (err, result) {
                 if (err) return res.badRequest(err);
                 return res.json(created);
               });
