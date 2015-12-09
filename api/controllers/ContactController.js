@@ -58,11 +58,14 @@ module.exports = {
       email = (typeof req.param('email') !== 'undefined') ? req.param('email') : '',
       phones = (typeof req.param('phones') !== 'undefined') ? JSON.parse(req.param('phones')) : '';
 
-    Contact.create({
-      firstname: firstname,
-      lastname: lastname,
-      email: email
-    }).exec(function (err, created) {
+    Contact.create(
+      /*{
+        firstname: firstname,
+        lastname: lastname,
+        email: email
+      }*/
+      req.allParams()
+    ).exec(function (err, created) {
       if (err) return res.badRequest(err);
       Contact.find({id: created.id}).populate('phones').exec(function (e, r) {
         if (phones !== '') {

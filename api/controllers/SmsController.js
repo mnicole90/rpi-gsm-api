@@ -13,20 +13,34 @@ module.exports = {
     var message,
       recipient;
 
-    // Todo: Vérifications des paramètres
-    message = req.param('message');
-    recipient = req.param('recipient');
+    if(typeof req.param('message') !== 'undefined') {
+      message = req.param('message');
+      if(messages.length > 140) {
+        return res.badRequest({errorMessage: "Le message doit contenir moins de 140 caractères."});
+      }
+    } else {
+      return res.badRequest({errorMessage: "Le message est obligatoire."});
+    }
 
-
-    gsm.init(function(err) {
-      if (err) return res.badRequest(err);
-
-      gsm.sendSMS(recipient, message, function (err, data) {
+    if(typeof req.param('recipient') !== 'undefined') {
+      recipient = req.param('recipient');
+      Contact.findOne({_id: recipient}).exec(function (err, result) {
         if (err) return res.badRequest(err);
-        return res.json(data);
-      });
 
-    });
+        gsm.init(function(err) {
+          if (err) return res.badRequest(err);
+
+          gsm.sendSMS(recipient, message, function (err, data) {
+            if (err) return res.badRequest(err);
+            return res.json(data);
+          });
+
+        });
+
+      });
+    } else {
+      return res.badRequest({errorMessage: "Le destinataire est obligatoire."});
+    }
   }
 
 };
