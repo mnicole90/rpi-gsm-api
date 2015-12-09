@@ -69,9 +69,9 @@ module.exports = {
               });
               r[0].save(function (err, res) {
                 if (err) return res.badRequest(err);
+                return res.json(created);
               });
             });
-            return res.json(created);
           }
         }
       });
