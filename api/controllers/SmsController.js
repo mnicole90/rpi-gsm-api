@@ -15,7 +15,7 @@ module.exports = {
 
     if (typeof req.param('message') !== 'undefined') {
       message = req.param('message');
-      if (messages.length > 140) {
+      if (message.length > 140) {
         return res.badRequest({errorMessage: "Le message doit contenir moins de 140 caractères."});
       }
     } else {
