@@ -30,6 +30,18 @@ module.exports = {
 
         gsm.sendSMS(recipient, message, function (err, data) {
           if (err) return res.badRequest(err);
+
+          Phone.find({phone: recipient}).exec(function (e, r) {
+              r[0].smsSend.add({
+                sender: 2, // Todo: A remplacer par celui qui est connecté à l'API
+                recipient: r.owner,
+                message: message
+              });
+              r[0].save(function (err, result) {
+                if (err) sails.log.error('SMS save (error): ', err);;
+                sails.log.verbose('SMS save (data): ', result);
+              });
+          });
           return res.json(data);
         });
 
