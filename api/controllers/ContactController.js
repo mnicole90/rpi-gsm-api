@@ -15,9 +15,9 @@ module.exports = {
   },
 
   getContactByNickname: function (req, res) {
-    Contact.find({nickname: req.param('nickname')}).populate('phones').exec(function (err, contacts) {
+    Contact.findOne({nickname: req.param('nickname')}).populate('phones').exec(function (err, contact) {
       if (err) return res.badRequest(err);
-      return res.json(contacts[0]);
+      return res.json(contact);
     });
   },
 
@@ -82,6 +82,17 @@ module.exports = {
     Contact.destroy({id: req.param('id')}).exec(function (err) {
       if (err) return res.badRequest(err);
       return res.json({deleted: req.param('id')});
+    });
+  },
+
+  getSMSByNickname: function (req, res) {
+    Contact.findOne({nickname: req.param('nickname')}).populateAll().exec(function (err, contact) {
+      if (err) return res.badRequest(err);
+      var sms = {
+        send: contact.smsSend,
+        receipt: contact.smsReceipt
+      }
+      return res.json(sms);
     });
   }
 

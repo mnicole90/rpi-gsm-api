@@ -45,9 +45,10 @@ module.exports.routes = {
   ***************************************************************************/
 
   /* Contacts */
-  'GET /contacts': 'Contact.getContact',
-  'GET /contacts/search': 'Contact.searchContacts',
+  'GET /contact': 'Contact.getContact',
+  'GET /contact/search': 'Contact.searchContacts',
   'GET /contact/:nickname': 'Contact.getContactByNickname',
+  'GET /contact/sms/:nickname': 'Contact.getSMSByNickname',
 
   'POST /contact': 'Contact.createContact',
 
