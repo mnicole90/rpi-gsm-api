@@ -17,10 +17,10 @@ module.exports = {
         if (err) return res.badRequest(err);
         if (!user) return res.json({errorMessage: "Les informations de connexion entrées en correspondent pas !"});
 
-        bcrypt.compare(req.param('password'), user.password, function (err, res) {
+        bcrypt.compare(req.param('password'), user.password, function (err, result) {
           if (err) return res.badRequest(err);
-          if (!res) return res.json({errorMessage: "Les informations de connexion entrées en correspondent pas !"});
-          return res.json(res);
+          if (!result) return res.json({errorMessage: "Les informations de connexion entrées en correspondent pas !"});
+          return res.json(user);
         });
       });
     }
