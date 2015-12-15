@@ -11,7 +11,7 @@ module.exports = {
     if (typeof req.param('nickname') === 'undefined' || typeof req.param('password') === 'undefined') {
       return res.json({errorMessage: "Les informations de connexion entrées en correspondent pas !"});
     } else {
-      Contact.findOne({nickname: req.param('nickname')}).exec(function (user) {
+      Contact.findOne({nickname: req.param('nickname')}).exec(function (err, user) {
         if (err) return res.badRequest(err);
         if (!user) return res.json({errorMessage: "Les informations de connexion entrées en correspondent pas !"});
 
