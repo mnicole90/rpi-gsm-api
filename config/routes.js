@@ -44,17 +44,41 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  /* Contacts */
-  'GET /contact': 'Contact.getContact',
-  'GET /contact/search': 'Contact.searchContacts',
+  /* Contact */
+  'GET /contact': 'Contact.getContacts',
   'GET /contact/:nickname': 'Contact.getContactByNickname',
-  'GET /contact/sms/:nickname': 'Contact.getSMSByNickname',
+  'GET /contact/:nickname/sms': 'Contact.getSMSByNickname',
+
+  'PUT /contact': 'Contact.updateContact',
 
   'POST /contact': 'Contact.createContact',
 
   'DELETE /contact': 'Contact.deleteContact',
 
+  /* Phone */
+  'PUT /phone': 'Phone.updatePhone',
+
   /* SMS */
-  'POST /sms/send': 'Sms.send'
+  'POST /sms': 'Sms.send',
+
+  /* Groupe */
+  'GET /group': 'Group.getGroups',
+  'GET /group/:name': 'Group.getGroupByName',
+
+  'PUT /group': 'Group.updateGroup',
+
+  'POST /group': 'Group.createGroup',
+
+  'DELETE /group': 'Group.deleteGroup',
+
+  /* Campagne */
+  'GET /campaign': 'Campaign.getCampaigns',
+  'GET /campaign/:name': 'Campaign.getCampaignByName',
+
+  'PUT /campaign': 'Campaign.updateCampaign',
+
+  'POST /campaign': 'Campaign.createCampaign',
+
+  'DELETE /campaign': 'Campaign.deleteCampaign'
 
 };

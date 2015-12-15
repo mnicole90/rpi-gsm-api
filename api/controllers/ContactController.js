@@ -7,7 +7,7 @@
 
 module.exports = {
 
-  getContact: function (req, res) {
+  getContacts: function (req, res) {
     Contact.find().populate('phones').exec(function (err, contacts) {
       if (err) return res.badRequest(err);
       return res.json(contacts);
@@ -18,37 +18,6 @@ module.exports = {
     Contact.findOne({nickname: req.param('nickname')}).populate('phones').exec(function (err, contact) {
       if (err) return res.badRequest(err);
       return res.json(contact);
-    });
-  },
-
-  searchContacts: function (req, res) {
-    var firstname = '',
-      lastname = '',
-      nickname = '';
-
-    if (typeof req.param('firstname') !== 'undefined') {
-      firstname = req.param('firstname')
-    }
-    if (typeof req.param('lastname') !== 'undefined') {
-      lastname = req.param('lastname')
-    }
-    if (typeof req.param('nickname') !== 'undefined') {
-      nickname = req.param('nickname')
-    }
-
-    Contact.find({
-      firstname: {
-        'contains': firstname
-      },
-      lastname: {
-        'contains': lastname
-      },
-      nickname: {
-        'contains': nickname
-      }
-    }).populate('phones').exec(function (err, contacts) {
-      if (err) return res.badRequest(err);
-      return res.json(contacts);
     });
   },
 
@@ -76,6 +45,11 @@ module.exports = {
         }
       });
     });
+  },
+
+  updateContact: function (req, res) {
+    // Todo: To be implement !
+    return res.json({info: "To be implement !"});
   },
 
   deleteContact: function (req, res) {
