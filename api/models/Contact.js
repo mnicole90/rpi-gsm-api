@@ -70,6 +70,19 @@ module.exports = {
     } else {
       cb();
     }
+  },
+
+  beforeUpdate: function (values, cb) {
+    if(typeof values.password !== 'undefined') {
+      // Encrypt password
+      bcrypt.hash(values.password, 10, function(err, hash) {
+        if(err) return cb(err);
+        values.password = hash;
+        cb();
+      });
+    } else {
+      cb();
+    }
   }
 
 };
