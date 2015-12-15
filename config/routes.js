@@ -44,6 +44,9 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+  /* Login */
+  'POST /login': 'Contact.login',
+
   /* Contact */
   'GET /contact': 'Contact.getContacts',
   'GET /contact/:nickname': 'Contact.getContactByNickname',
