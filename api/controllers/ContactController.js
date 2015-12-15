@@ -65,8 +65,8 @@ module.exports = {
   },
 
   updateContact: function (req, res) {
-    Contact.update({nickname: req.param('nickname')}, req.allParams()).exec(function(contact) {
-      if(err) return res.badRequest(res);
+    Contact.update({nickname: req.param('nickname')}, req.allParams()).exec(function(err, contact) {
+      if(err) return res.badRequest(err);
       return res.json(contact[0]);
     });
   },
