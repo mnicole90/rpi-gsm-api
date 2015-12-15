@@ -65,8 +65,10 @@ module.exports = {
   },
 
   updateContact: function (req, res) {
-    // Todo: To be implement !
-    return res.json({info: "To be implement !"});
+    Contact.update({nickname: req.param('nickname')}, req.allParams()).exec(function(contact) {
+      if(err) return res.badRequest(res);
+      return res.json(contact[0]);
+    });
   },
 
   deleteContact: function (req, res) {
