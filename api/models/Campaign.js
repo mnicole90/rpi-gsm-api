@@ -18,6 +18,12 @@ module.exports = {
       type: 'date'
     },
 
+    message: {
+      type: 'string',
+      size: 140,
+      required: true
+    },
+
     groups: {
       collection: 'group',
       via: 'campaigns'
