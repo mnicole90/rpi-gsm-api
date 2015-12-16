@@ -62,6 +62,7 @@ module.exports.routes = {
 
   /* Phone */
   'PUT /phone': 'Phone.updatePhone',
+  'POST /phone': 'Phone.addPhone',
 
   /* SMS */
   'POST /sms': 'Sms.send',
@@ -71,6 +72,7 @@ module.exports.routes = {
   'GET /group/:name': 'Group.getGroupByName',
 
   'PUT /group': 'Group.updateGroup',
+  'PUT /group/contact': 'Group.assignContact',
 
   'POST /group': 'Group.createGroup',
 
@@ -81,6 +83,7 @@ module.exports.routes = {
   'GET /campaign/:name': 'Campaign.getCampaignByName',
 
   'PUT /campaign': 'Campaign.updateCampaign',
+  'PUT /campaign/group': 'Campaign.assignGroup',
 
   'POST /campaign': 'Campaign.createCampaign',
 

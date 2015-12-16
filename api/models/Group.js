@@ -9,6 +9,20 @@ module.exports = {
 
   attributes: {
 
+    name: {
+      type: 'string'
+    },
+
+    campaigns: {
+      collection: 'campaign',
+      via: 'groups'
+    },
+
+    contacts: {
+      collection: 'contact',
+      via: 'groups'
+    }
+
   }
 };
 

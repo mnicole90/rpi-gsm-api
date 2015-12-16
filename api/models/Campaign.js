@@ -9,6 +9,20 @@ module.exports = {
 
   attributes: {
 
+    name: {
+      type: 'string',
+      required: true
+    },
+
+    dateSend: {
+      type: 'date'
+    },
+
+    groups: {
+      collection: 'group',
+      via: 'campaigns'
+    }
+
   }
 };
 
