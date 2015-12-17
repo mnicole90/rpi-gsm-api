@@ -22,6 +22,10 @@ module.exports = {
       return res.badRequest({errorMessage: "Le message est obligatoire."});
     }
 
+    if(typeof req.param('idSender') === 'undefined') {
+      return res.badRequest({errorMessage: "L'iID de l'envoyer est obligatoire."});
+    }
+
     if (typeof req.param('recipient') !== 'undefined') {
       recipient = req.param('recipient');
 
@@ -35,7 +39,7 @@ module.exports = {
 
             Contact.findOne({id: r.owner}).populate('smsSend').exec(function (e, r) {
               r.smsSend.add({
-                sender: 2, // Todo: A remplacer par celui qui est connecté à l'API
+                sender: req.param('idSender'),
                 recipient: r.owner,
                 message: message
               });
