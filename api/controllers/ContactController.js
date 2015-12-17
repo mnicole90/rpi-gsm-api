@@ -34,7 +34,7 @@ module.exports = {
   },
 
   getContactByNickname: function (req, res) {
-    Contact.findOne({nickname: req.param('nickname')}).populate('phones').exec(function (err, contact) {
+    Contact.findOne({nickname: req.param('nickname')}).populateAll().exec(function (err, contact) {
       if (err) return res.badRequest(err);
       return res.json(contact);
     });
