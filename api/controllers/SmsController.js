@@ -41,7 +41,7 @@ module.exports = {
               });
               r.save(function (err, result) {
                 if (err) sails.log.error('SMS save (error): ', err);;
-                sails.log.verbose('SMS save (data): ', result);
+                sails.log.verbose('SMS save (data): ', recipient + ': ' + message);
               });
             });
 
